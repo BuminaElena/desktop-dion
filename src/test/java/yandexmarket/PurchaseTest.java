@@ -1,34 +1,25 @@
 package yandexmarket;
 
-import Pages.BasePage;
-import Pages.ProductCard;
-import Pages.YandexMarketPage;
+import pages.ProductCard;
+import pages.YandexMarketPage;
 
 import org.testng.annotations.Test;
 
 public class PurchaseTest extends BaseTest{
 
-
-
     @Test
     public void purchaseTest() throws InterruptedException {
-//        Assert.assertTrue(webDriver.findElement(YANDEX_LOGO).isDisplayed());
-//        Thread.sleep(5000);
         YandexMarketPage yandexMarketPage = new YandexMarketPage(webDriver);
         ProductCard productCard = new ProductCard(webDriver);
         yandexMarketPage.processCaptcha();
-        yandexMarketPage.enterToProfile();
         yandexMarketPage.goToCatalog();
         yandexMarketPage.moveToLeftMenuItem("Зоотовары");
-        yandexMarketPage.processCaptcha();
-        yandexMarketPage.goToCatalogSection("Для собак", "Лакомства");
-        yandexMarketPage.processCaptcha();
-        yandexMarketPage.enterPrice("50", "5000");
+        yandexMarketPage.goToCatalogSection("Для кошек", "Лакомства");
+        yandexMarketPage.enterPrice("50", "1500");
         yandexMarketPage.selectDeliveryType("Доставка курьером");
-        yandexMarketPage.selectManufacturer("Pedigree");
+        yandexMarketPage.selectManufacturer("Мнямс");
         yandexMarketPage.openFirstFoundProduct();
         productCard.compareProduct();
-        Thread.sleep(10000);
     }
 
 }
