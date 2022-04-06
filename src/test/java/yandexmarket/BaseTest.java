@@ -15,18 +15,20 @@ public class BaseTest {
 
     @BeforeTest
     public void setup() {
-        FirefoxProfile profile = new FirefoxProfile();
-        profile.setPreference("profile", "src/test/resources/1tmt63ir.default-release");
+//        Пробуем открыть профиль
+//        FirefoxProfile profile = new FirefoxProfile();
+//        profile.setPreference("profile", "src/test/resources/rz9mo2sv.default");
         FirefoxOptions capabilities = new FirefoxOptions();
-        capabilities.setProfile(profile);
+//        capabilities.setProfile(profile);
         System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
-        webDriver = new FirefoxDriver(capabilities);
+        webDriver = new FirefoxDriver();
         webDriver.get(BASE_URL);
         webDriver.manage().window().maximize();
     }
 
     @AfterTest
     public void quit() {
+//        чистим кэш и куки
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) webDriver;
         webDriver.manage().deleteAllCookies();
         javascriptExecutor.executeScript("window.sessionStorage.clear()");
