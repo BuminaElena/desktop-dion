@@ -18,7 +18,6 @@ public class BaseTest {
         opt.setBinary("C:\\Users\\user\\AppData\\Local\\Programs\\dion\\dion.exe");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("chromeOptions", opt);
-        capabilities.setBrowserName("chrome");
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver106.exe");
         webDriver = new ChromeDriver(capabilities);
     }

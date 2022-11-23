@@ -2,24 +2,41 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import ru.sbtqa.tag.pagefactory.annotations.ElementTitle;
+import ru.sbtqa.tag.pagefactory.annotations.PageEntry;
 
 public class DionGreetingPage extends BasePage{
     public DionGreetingPage(WebDriver webDriver) {
         super(webDriver);
+        PageFactory.initElements(webDriver, this);
     }
 
-    private static final By TO_AUTH = By.xpath("//a[@id='go-to-login']");
-    private static final By EMAIL = By.xpath("//input[@id='email']");
-    private static final By PASSWORD = By.xpath("//input[@id='password']");
-    private static final By LOGIN_BUTTON = By.xpath("//button[@id='login-button']");
+    @ElementTitle(value = "Войти для авторизации")
+    @FindBy(xpath = "//a[@id='go-to-login']")
+    private WebElement goToLogin;
+
+    @ElementTitle(value = "Логин")
+    @FindBy(xpath = "//input[@id='email']")
+    private WebElement loginInput;
+
+    @ElementTitle(value = "Пароль")
+    @FindBy(xpath = "//input[@id='password']")
+    private WebElement passwordInput;
+
+    @ElementTitle(value = "Войти")
+    @FindBy(xpath = "//button[@id='login-button']")
+    private WebElement loginButton;
 
     public void goToLogin() {
-        waitForElementIsClicable(TO_AUTH).click();
+        goToLogin.click();
     }
 
     public void auth(String email, String password) {
-        waitForElementIsVisible(EMAIL).sendKeys(email);
-        waitForElementIsVisible(PASSWORD).sendKeys(password);
-        waitForElementIsClicable(LOGIN_BUTTON).click();
+        loginInput.sendKeys(email);
+        passwordInput.sendKeys(password);
+        loginButton.click();
     }
 }

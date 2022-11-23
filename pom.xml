@@ -26,6 +26,12 @@
             <artifactId>selenium-java</artifactId>
             <version>4.1.2</version>
         </dependency>
+        <dependency>
+            <groupId>ru.vtb</groupId>
+            <artifactId>page-factory</artifactId>
+            <version>1.7.0</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
